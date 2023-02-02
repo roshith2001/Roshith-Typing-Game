@@ -73,6 +73,7 @@ p{
 }
 .highlight{
     background-color: cyan;
+    border-radius: inherit;
 }
 .error{
     background-color: rgb(250, 0, 0);

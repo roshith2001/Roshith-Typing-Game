@@ -45,12 +45,14 @@ typedValue.addEventListener('input', () =>{
 
     if (inpValue === currentWord && wordIndex === words.length-1){
         const elapsedTime = new Date().getTime() - startTime;
+        const elapsedTimeMin = elapsedTime/1000;
+        const score = (wordIndex)/(elapsedTimeMin/60);
 
-        messageElement.innerHTML = `Congratulations! The time you took is <b>${elapsedTime/1000}</b> seconds`;
+        messageElement.innerHTML = `Congratulations! The time you took is <b>${elapsedTimeMin}</b> seconds and your score is <b>${score}</b> words/min`;
         setTimeout(function(){
             document.getElementById('textField').style.display = 'none';
             document.getElementById('for-border').style.display = 'none';
-        },3000)
+        },5000)
     }
     else if (inpValue.endsWith(' ') && inpValue.trim() == currentWord){
         typedValue.value = '';
