@@ -37,16 +37,14 @@ document.getElementById('start').addEventListener('click', function(){
 typedValue.addEventListener('input', () =>{
     const currentWord = words[wordIndex];
     const inpValue = typedValue.value;
-    const trimInpValue = inpValue.trim();
-    const curUpper = currentWord.toUpperCase();
-    const typUpper = inpValue.toUpperCase();
+    
 
-    if (typUpper === curUpper && wordIndex === words.length-1){
+    if (inpValue === currentWord && wordIndex === words.length-1){
         const elapsedTime = new Date().getTime() - startTime;
 
         messageElement.innerHTML = `Congratulations! The time you took is <b>${elapsedTime/1000}</b> seconds`;
     }
-    else if (typUpper.endsWith(' ') && trimInpValue.toUpperCase() == curUpper){
+    else if (inpValue.endsWith(' ') && inpValue.trim() == currentWord){
         typedValue.value = '';
         wordIndex++;
 
@@ -55,7 +53,7 @@ typedValue.addEventListener('input', () =>{
         }
         quoteElement.childNodes[wordIndex].className = 'highlight';
     }
-    else if (curUpper.startsWith(typUpper)){
+    else if (currentWord.startsWith(inpValue)){
         typedValue.className = '';
     }
     else {
