@@ -41,7 +41,7 @@ typedValue.addEventListener('input', () =>{
     if (inpValue === currentWord && wordIndex === words.length-1){
         const elapsedTime = new Date().getTime() - startTime;
 
-        messageElement.innerHTML = `Congratulations! The time you tooke is <b>${elapsedTime/1000}</b> seconds`;
+        messageElement.innerHTML = `Congratulations! The time you took is <b>${elapsedTime/1000}</b> seconds`;
     }
     else if (inpValue.endsWith(' ') && inpValue.trim() == currentWord){
         typedValue.value = '';
