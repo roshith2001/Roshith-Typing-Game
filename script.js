@@ -15,6 +15,9 @@ const messageElement = document.getElementById('message');
 const typedValue = document.getElementById('textField');
 
 document.getElementById('start').addEventListener('click', function(){
+    document.getElementById('textField').style.display = 'block';
+    document.getElementById('for-border').style.display = 'block';
+
     const quoteIndex = Math.floor(Math.random() * quotes.length);
     const quote = quotes[quoteIndex];
     words = quote.split(' ');
@@ -37,12 +40,17 @@ document.getElementById('start').addEventListener('click', function(){
 typedValue.addEventListener('input', () =>{
     const currentWord = words[wordIndex];
     const inpValue = typedValue.value;
-    
+
+   
 
     if (inpValue === currentWord && wordIndex === words.length-1){
         const elapsedTime = new Date().getTime() - startTime;
 
         messageElement.innerHTML = `Congratulations! The time you took is <b>${elapsedTime/1000}</b> seconds`;
+        setTimeout(function(){
+            document.getElementById('textField').style.display = 'none';
+            document.getElementById('for-border').style.display = 'none';
+        },3000)
     }
     else if (inpValue.endsWith(' ') && inpValue.trim() == currentWord){
         typedValue.value = '';
